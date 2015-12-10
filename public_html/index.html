@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
+    <script type="text/javascript" src="script/gettheme.js"></script>
+    <script type="text/javascript" src="script/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="script/jqxcore.js"></script>
+    <script type="text/javascript" src="script/jqxbuttons.js"></script>
+    <script type="text/javascript" src="script/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="script/jqxpanel.js"></script>
+    <script type="text/javascript" src="script/jqxtree.js"></script>
+    <script type="text/javascript" src="script/jqxexpander.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var theme = getDemoTheme();
+            // Create jqxExpander
+            $('#jqxExpander').jqxExpander({ showArrow: false, toggleMode: 'none', width: '300px', height: '370px', theme: theme });
+            // Create jqxTree
+            var source = [
+            {
+                icon: "images/icon.jpg", label: "Notebooks", expanded: true, items: [
+                  { icon: "images/icon.jpg", label: "All Notes <span class=count>(187)</span>" },
+                  { icon: "images/icon.jpg", label: "quinzhang_seattle's notebook <span class=count>(5)</span>", selected: true },
+                  { icon: "images/icon.jpg", label: "todo list", expanded: true, items: [
+                        { icon: "images/icon.jpg", label: "December 2012  <span class=count>(12)</span>" },
+                        { icon: "images/icon.jpg", label: "November 2012  <span class=count>(14)</span>"},
+                        { icon: "images/icon.jpg", label: "October 2012 <span class=count>(18)</span>" },
+                        { icon: "images/icon.jpg", label: "September 2012 <span class=count>(35)</span>"}
+                  ]},
+                  { icon: "images/icon.jpg", label: "Work Notebook <span class=count>(100)</span>" },
+                  { icon: "images/icon.jpg", label: "Work Notebook[2] <span class=count>(2)</span>", selected: true }
+                ]
+            },
+            {   icon: "images/icon.jpg", label: "Tags", expanded: true, items: [
+                 { label: "2010 Weekly <span class=count>(3)</span>" },
+                 { label: "2011 <span class=count>(2)</span>" },
+                 { label: "family <span class=count>(1)</span>" },
+                 { label: "Meeting notes <span class=count>(2)</span>" },
+                 { label: "Miscellaneous <span class=count>(1)</span>" },
+                 { label: "Planning <span class=count>(2)</span>" },
+                 { label: "Project B<span class=count>(1)</span>" },
+                 { label: "recruiting <span class=count>(7)</span>" },
+                 { label: "Research <span class=count>(5)</span>" },
+                 { label: "review <span class=count>(6)</span>" },
+                 { label: "Science <span class=count>(1)</span>" },
+                 { label: "todo <span class=count>(1)</span>" },
+                 { label: "Travel <span class=count>(6)</span>" },
+                 { label: "Weekly <span class=count>(66)</span>" },
+                ]
+            },
+            {   icon: "images/icon.jpg", label: "Attributes", expanded: true, items: [
+                 { label: "Created" },
+                 { label: "Last Modified" },
+                 { label: "Contains" },
+                 { label: "Source" }
+                ]
+            }
+            ];
+
+            $('#jqxTree').jqxTree({ source: source, width: '100%', height: '100%', theme: theme });
+            $('#jqxTree').jqxTree('selectItem', null);
+            $('#jqxTree').on('select', function (event) {
+                var title = $(event.args.element).text().substr(0, 4);
+                $("#note-browser").html('');
+                for (var i=0; i<20; i++) {
+                    $("#note-browser").append('<div class="note-item"><img src="images/icon_big.jpg"><br><label class="notename">' + title + i + '...</label><br><label class="notedate">5/1/2012</label></div>');
+                
+                }
+                $('.note-item').on('click', function () {
+                    $("#note-content").html("<div style='margin: 10px;'>" + $(this).text() + "</div>");
+                });
+            });
+            $('.note-item').on('click', function () {
+                $("#note-content").html("<div style='margin: 10px;'>" + $(this).text() + "</div>");
+            });
+        });
+    </script>
+    </head>
+    <body>
+        <div class="top-menu">
+            <ul class="drop-menu">
+                <li><a>File</a></li>
+                <li><a>Edit</a></li>
+                <li><a>View</a></li>
+                <li><a>Format</a></li>
+                <li><a>Tool</a></li>
+                <li><a>Help</a></li>
+           </ul>
+            <ul class="top-toolbar">
+                <li><a><img src="images/icon.jpg"/>Sync</a></li>
+                <li><a><img src="images/icon.jpg"/>Free</a></li>
+                <li><a><img src="images/icon.jpg"/>Activity</a></li>
+                <li><a><img src="images/icon.jpg"/>Trunk</a></li>
+                <li class="separator"></li>
+                <li><a><img src="images/icon.jpg"/>New Note</a></li>
+                <li><a><img src="images/icon.jpg"/>Share</a></li>
+                <li><a><img src="images/icon.jpg"/>Print</a></li>
+                <li><a><img src="images/icon.jpg"/>Delete</a></li>
+                <li class="separator"></li>
+                <li><a><img src="images/icon.jpg"/>Usage</a></li>
+            </ul>
+        </div>
+        <div class="toolbar">
+            <ul class="toolbar-ul">
+                <li><a>All Notes</a></li>
+                <li><a><img src="images/icon.jpg"/>Notebooks</a></li>
+                <li><a><img src="images/icon.jpg"/>Tags</a></li>
+                <li><a>Web Clips</a></li>
+                <li><a>Mobiles</a></li>
+                <li><a>Files</a></li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="left-side">
+                <div class="left-menu">
+                    <div style="border: none;" id='jqxTree'></div>
+               </div>
+                <div class="left-ad"></div>
+            </div>
+            <div id="note-browser">
+                <div class="note-item"><img src="images/icon_big.jpg"><br>
+                    <label class="notename">Scre1...</label><br>
+                    <label class="notedate">2/1/2012</label>
+                </div>
+                <div class="note-item"><img src="images/icon_big.jpg"><br>
+                    <label class="notename">Scre2...</label><br>
+                    <label class="notedate">2/1/2012</label>
+                </div>
+                <div class="note-item"><img src="images/icon_big.jpg"><br>
+                    <label class="notename">Scre3...</label><br>
+                    <label class="notedate">2/1/2012</label>
+                </div>
+                <div class="note-item"><img src="images/icon_big.jpg"><br>
+                    <label class="notename">Scre4...</label><br>
+                    <label class="notedate">2/1/2012</label>
+                </div>
+                <div class="note-item"><img src="images/icon_big.jpg"><br>
+                    <label class="notename">Scre5...</label><br>
+                    <label class="notedate">2/1/2012</label>
+                </div>
+                <div class="note-item"><img src="images/icon_big.jpg"><br>
+                    <label class="notename">Scre6...</label><br>
+                    <label class="notedate">2/1/2012</label>
+                </div>
+                <div class="note-item"><img src="images/icon_big.jpg"><br>
+                    <label class="notename">Scre7...</label><br>
+                    <label class="notedate">2/1/2012</label>
+                </div>
+                <div class="note-item"><img src="images/icon_big.jpg"><br>
+                    <label class="notename">Scre8...</label><br>
+                    <label class="notedate">2/1/2012</label>
+                </div>
+            </div>
+            <div id="note-content">content</div>
+        </div>
+    </body>
+</html>

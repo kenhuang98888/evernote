@@ -1,0 +1,116 @@
+body {
+    margin: 0px;    
+}
+
+.top-menu {
+    background-image: url('../images/menu_bg2.jpg');
+    background-repeat:repeat-x;   
+    height : 40px;
+    width: 1200px;
+    display: block;  
+}
+
+.top-menu .drop-menu {
+    background-image: url('../images/menu_bg.jpg');
+    background-repeat:repeat-x;
+    display: inline-block;
+    margin : 0px;
+    padding: 10px 0px 0px 10px;
+    height : 30px;
+    width: 330px;
+}
+
+
+.top-menu img{
+    margin-right:5px;
+}
+
+.top-menu .top-toolbar {
+    background: url('../images/menu_bg3.jpg') 0px 2px no-repeat;
+    display: inline-block;
+    margin : 0px 0px 0px -5px;
+    padding: 10px 0px 0px 30px;
+    height : 30px;
+}
+
+.top-menu li, .toolbar li {
+    display: inline;
+    padding: 10px;
+    font-family: sans-serif;
+    font-size:13px;
+}
+
+li.separator{
+    border-left: 
+}
+
+.toolbar{ 
+    margin-top: 5px;
+    height : 25px;
+    width: 1200px;
+    display: block;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    background-color: #E2E3E9;
+    
+}
+
+.toolbar-ul{
+    padding: 0px;
+    margin-top: 5px;
+}
+
+
+.main {
+    width: 1200px;
+    background-color: #DFE0E7;
+    height: 620px;
+}
+
+.left-side {
+    width : 300px;
+    height: 600px;
+    display: inline-block;
+    float: left;
+    margin: 3px;
+    
+}
+
+.left-menu {
+    height: 400px;
+    overflow-y:scroll;
+    
+}
+
+.left-ad {
+    border-top: 1px dotted gray;
+}
+
+#note-browser{ 
+    width : 400px;
+    height: 600px;
+    float: left;
+    background-color: #FFFFFF;
+    border: 1px solid gray;
+    margin: 3px;
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+#note-content {
+    width: 430px;
+    height: 600px;
+    float: left;
+    background-color: #FFFFFF;
+    border: 1px solid gray;
+    margin: 3px;
+    padding: 10px;
+    overflow: scroll;
+}
+
+.note-item {
+    float: left;
+    padding: 10px;
+}
+
+
